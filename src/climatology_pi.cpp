@@ -225,11 +225,11 @@ static bool ClimatologyData(int setting, wxDateTime &date, double lat, double lo
     s_climatology_pi->CreateOverlayFactory();
 
     speed = g_pOverlayFactory->getValue(MAG, setting, lat, lon, &date);
-    if(isnan(speed))
+    if(wxIsNaN(speed))
         return false;
 
     dir = g_pOverlayFactory->getValue(DIRECTION, setting, lat, lon, &date);
-    if(isnan(dir))
+    if(wxIsNaN(dir))
         return false;
 
     return true;
