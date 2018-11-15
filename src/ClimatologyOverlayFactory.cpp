@@ -163,9 +163,9 @@ ClimatologyOverlayFactory::ClimatologyOverlayFactory( ClimatologyDialog &dlg )
             wxString servers[] = {"https://ayera", "https://cytranet", "https://svwh", "https://cfhcable"};
             int servercount = ((sizeof servers) / (sizeof *servers));
             wxString url = ".dl.sourceforge.net/project/opencpnplugins/climatology_pi/CL-DATA-1.0/";
-            for(std::list<wxString>::iterator it = m_FailedFiles.begin();
-                it != m_FailedFiles.end(); it++ ) {
-                wxString fn = *it;
+            for(auto const & it: m_FailedFiles )
+            {
+                wxString fn = it;
                 if(!fn.EndsWith(".txt"))
                     fn += ".gz"; // download gzipped file
                 int j;
