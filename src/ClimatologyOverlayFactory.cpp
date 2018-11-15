@@ -160,7 +160,7 @@ ClimatologyOverlayFactory::ClimatologyOverlayFactory( ClimatologyDialog &dlg )
             int i = 0;
             bool failed = false;
             wxString path = ClimatologyUserDataDirectory();
-            wxString servers[] = {"https://ayera", "https://cytranet", "https://svwh", "https://cfhcable"};
+            wxString servers[] = {"https://ayera", "https://cytranet", /*"https://svwh", "https://cfhcable"*/};
             int servercount = ((sizeof servers) / (sizeof *servers));
             wxString url = ".dl.sourceforge.net/project/opencpnplugins/climatology_pi/CL-DATA-1.0/";
             for(auto const & it: m_FailedFiles )
@@ -172,6 +172,7 @@ ClimatologyOverlayFactory::ClimatologyOverlayFactory( ClimatologyDialog &dlg )
                 for(j=0; j<servercount; j++) {
                     int ind = (i+j)%servercount;
                     wxString urlpath = servers[ind] + url;
+                    wxLogMessage(climatology_pi + _("download: ") + urlpath + fn);
                 
                     _OCPN_DLStatus status = OCPN_downloadFile(
                         urlpath + fn,
